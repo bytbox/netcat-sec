@@ -2,7 +2,7 @@ package main
 
 import (
 	"bufio"
-	//"crypto/tls"
+	"crypto/tls"
 	"flag"
 	"fmt"
 	"io"
@@ -15,6 +15,7 @@ const VERSION = `0.1`
 // Flags
 var (
 	version = flag.Bool("V", false, "Display version information and exit")
+	useTLS = flag.Bool("tls", false, "Use TLS")
 )
 
 func main() {
@@ -31,7 +32,16 @@ func main() {
 	}
 	host, port := args[0], args[1]
 
-	conn, err := net.Dial("tcp", host+":"+port)
+	var (
+		conn net.Conn
+		err  error
+	)
+
+	if *useTLS {
+		conn, err = tls.Dial("tcp", host+":"+port, nil)
+	} else {
+		conn, err = net.Dial("tcp", host+":"+port)
+	}
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
