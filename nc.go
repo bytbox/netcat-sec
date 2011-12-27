@@ -63,7 +63,7 @@ func main() {
 				fmt.Fprintln(os.Stderr, err)
 				os.Exit(1)
 			}
-			fmt.Print(string(l))
+			fmt.Println(string(l))
 		}
 	}()
 
