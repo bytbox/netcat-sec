@@ -1,0 +1,5 @@
+A simple netcat clone capable of performing TLS negotiation. Usage is simple:
+
+  netcat-sec hostname port
+
+To skip TLS (thereby acting as normal netcat), use -tls=false.
