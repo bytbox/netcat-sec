@@ -24,7 +24,14 @@ func main() {
 		fmt.Printf("netcat-tls %s\n", VERSION)
 	}
 
-	conn, err := net.Dial("tcp", "google.com:80")
+	args := flag.Args()
+	if len(args) != 2 {
+		fmt.Fprintln(os.Stderr, "Need host and port")
+		return
+	}
+	host, port := args[0], args[1]
+
+	conn, err := net.Dial("tcp", host+":"+port)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
