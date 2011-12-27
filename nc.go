@@ -19,6 +19,9 @@ var (
 )
 
 func main() {
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "usage: %s [-tls=false] hostname port\n", os.Args[0])
+	}
 	flag.Parse()
 
 	if *version {
@@ -27,7 +30,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) != 2 {
-		fmt.Fprintln(os.Stderr, "Need host and port")
+		flag.Usage()
 		return
 	}
 	host, port := args[0], args[1]
