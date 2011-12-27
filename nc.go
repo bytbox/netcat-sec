@@ -15,7 +15,7 @@ const VERSION = `0.1`
 // Flags
 var (
 	version = flag.Bool("V", false, "Display version information and exit")
-	useTLS = flag.Bool("tls", false, "Use TLS")
+	useTLS = flag.Bool("tls", true, "Use TLS")
 )
 
 func main() {
