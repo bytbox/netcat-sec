@@ -1,6 +1,6 @@
 include ${GOROOT}/src/Make.inc
 
-TARG = netcat-tls
+TARG = netcat-sec
 GOFILES = nc.go
 
 include ${GOROOT}/src/Make.cmd

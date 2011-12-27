@@ -22,7 +22,7 @@ func main() {
 	flag.Parse()
 
 	if *version {
-		fmt.Printf("netcat-tls %s\n", VERSION)
+		fmt.Printf("netcat-sec %s\n", VERSION)
 	}
 
 	args := flag.Args()
